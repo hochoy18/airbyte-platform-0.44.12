@@ -1,0 +1,22 @@
+@use "scss/colors";
+@use "scss/variables";
+
+.container {
+  max-width: 409px;
+}
+
+.checkIcon {
+  color: colors.$dark-blue-100;
+}
+
+.details {
+  align-self: center;
+  @media (min-width: 500px) {
+    flex-direction: row;
+  }
+}
+
+.detailTextContainer {
+  min-width: fit-content;
+  color: colors.$dark-blue;
+}

@@ -1,0 +1,12 @@
+@use "scss/colors";
+@use "scss/variables";
+
+.container {
+  min-height: 100vh;
+  padding-bottom: 40px;
+  background-color: colors.$white;
+}
+
+.content {
+  padding: 0 variables.$spacing-2xl;
+}

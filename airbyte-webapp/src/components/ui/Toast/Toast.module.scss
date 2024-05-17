@@ -1,0 +1,33 @@
+@use "scss/colors";
+@use "scss/variables";
+@use "scss/z-indices";
+@use "scss/mixins";
+
+$toast-bottom-margin: 27px;
+
+@keyframes slide-up-animations {
+  0% {
+    transform: translate(-50%, -100%);
+    bottom: -60px;
+  }
+
+  100% {
+    transform: translate(-50%, 0);
+    bottom: $toast-bottom-margin;
+  }
+}
+
+.toastContainer {
+  box-shadow: variables.$box-shadow-raised;
+  max-width: variables.$width-max-notification;
+  position: fixed;
+  bottom: $toast-bottom-margin;
+  margin-left: calc(variables.$width-size-menu / 2);
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: z-indices.$notification;
+  border-radius: variables.$border-radius-md;
+  border-width: 1px;
+  border-style: solid;
+  animation: slide-up-animations 0.25s ease-out;
+}

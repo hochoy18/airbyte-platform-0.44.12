@@ -1,0 +1,33 @@
+dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  version: 1.17.1
+- name: airbyte-bootloader
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: temporal
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: webapp
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: server
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: worker
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: pod-sweeper
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: metrics
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: cron
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+- name: connector-builder-server
+  repository: https://airbytehq.github.io/helm-charts/
+  version: 0.45.20
+digest: sha256:a7f10e58220bcdcf5c2bab09baf2a9ff6b2461c4babe83cc92a5099a43d3c130
+generated: "2023-05-12T21:42:39.157577426Z"

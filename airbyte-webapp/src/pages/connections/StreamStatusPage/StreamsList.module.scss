@@ -1,0 +1,45 @@
+@use "scss/colors";
+@use "scss/mixins";
+@use "scss/variables";
+@use "scss/z-indices";
+
+.clickableHeader {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.body {
+  padding: variables.$spacing-md 0;
+}
+
+.search {
+  flex-basis: 400px;
+}
+
+.tableContainer {
+  .syncing {
+    background: none;
+    @include mixins.striped-background(colors.$dark-blue-30, 30px);
+  }
+
+  .statusHeader {
+    width: 65px;
+  }
+
+  .statusCell {
+    text-align: center;
+  }
+
+  .actionsHeader {
+    width: 50px;
+  }
+}

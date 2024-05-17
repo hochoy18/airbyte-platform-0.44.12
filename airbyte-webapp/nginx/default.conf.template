@@ -1,0 +1,50 @@
+upstream api-server {
+    server $INTERNAL_API_HOST;
+}
+
+upstream connector-builder-server {
+   server $CONNECTOR_BUILDER_API_HOST;
+}
+
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+
+    add_header Content-Security-Policy "script-src * 'unsafe-inline'; worker-src self blob:;";
+
+    location / {
+        root   /usr/share/nginx/html;
+        location ~ ^/(?!(assets/.*)) {
+            try_files $uri $uri/ /index.html;
+        }
+
+        # (Developer Note): Please only add new properties to this, if they really need to be configurable
+        #                   by a user at runtime i.e. without rebuilding the docker images. General webapp config
+        #                   belongs in an environment file.
+        sub_filter </head>
+                '<script data-script="config-overwrites">
+                window.TRACKING_STRATEGY = "$TRACKING_STRATEGY";
+                </script></head>';
+        sub_filter_once on;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location /api/ {
+        fastcgi_read_timeout 1h;
+        proxy_read_timeout 1h;
+        client_max_body_size 200M;
+        proxy_pass http://api-server/api/;
+    }
+
+    location /connector-builder-api/ {
+        fastcgi_read_timeout 1h;
+        proxy_read_timeout 1h;
+        client_max_body_size 200M;
+        proxy_pass http://connector-builder-server/;
+    }
+}
